@@ -1,4 +1,5 @@
-# spotify-analysis (temporary project man)
+# spotify-analysis 
+(temporary project name)
 
 ## Background
 
