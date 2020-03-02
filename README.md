@@ -22,5 +22,5 @@ The app will consist of a single screen with a search bar, a radial display for 
 nav links to the Github, my LinkedIn. The app will in addition display historical information for the track, or biographical 
 information for artists along genre tags and album art. 
 
-![wireframe](https://github.com/acuccu/spotify-analysis/src/assets/Screen Shot 2020-03-01 at 10.16.39 PM.png)
+![wireframe](https://github.com/acuccu/spotify-analysis/blob/master/src/assets/Screen%20Shot%202020-03-01%20at%2010.16.39%20PM.png)
 
