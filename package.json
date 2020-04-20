@@ -2,7 +2,7 @@
   "name": "js_project_skeleton",
   "version": "1.0.0",
   "description": "skeleton for new JS project",
-  "main": "index.js",
+  "main": "index",
   "browserslist": [
     "last 1 version",
     "> 1%",
@@ -14,13 +14,20 @@
     "webpack:watch": "webpack --watch --config webpack.dev.js",
     "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
   },
+  "node": {
+    "fs": "empty"
+  },
   "author": "mrcjbradley",
   "license": "ISC",
   "dependencies": {
+    "babel": "^6.23.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "net": "^1.0.2",
     "querystring": "^0.2.0",
     "reques": "0.0.1-security",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "spotify-web-api-node": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
