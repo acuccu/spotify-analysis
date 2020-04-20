@@ -1,4 +1,5 @@
-# spotify-analysis (temporary project man)
+# spotify-analysis 
+(temporary project name)
 
 ## Background
 
@@ -16,11 +17,13 @@ to find tracks and artists with similar moods and properties by using the Echo N
 Bonus: 
 * Map displaying mood, properties, and context of top tracks by location. 
 
-## Wireframe
+## Wireframe & File Structure
 
 The app will consist of a single screen with a search bar, a radial display for data visualization, and 
 nav links to the Github, my LinkedIn. The app will in addition display historical information for the track, or biographical 
 information for artists along genre tags and album art. 
 
-![wireframe](https://github.com/acuccu/spotify-analysis/blob/master/src/assets/Screen%20Shot%202020-03-01%20at%2010.16.39%20PM.png)
+File Structure will be updated further in the project. 
+
+![wireframe](https://github.com/acuccu/spotify-analysis/blob/master/src/assets/Screen%20Shot%202020-03-01%20at%2010.54.43%20PM.png)
 
