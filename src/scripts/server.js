@@ -1,8 +1,15 @@
-const client_secret = require("../../node_modules/keys").client_secret;
-const client_id = require("../../node_modules/keys").client_id;
+// const client_secret = require("../../node_modules/keys").client_secret;
+// const client_id = require("../../node_modules/keys").client_id;
 
-const express = require('express');
+import {client_id} from "../../node_modules/keys"
+import {client_secret} from "../../node_modules/keys"
+import express from "express"
+import { Server } from "net";
+
+// const express = require('express');
 const app = express();
+
+
 app.use(express.static('public'));
 app.get("/", function (request, response) {
     response.sendFile(__dirname + '/index.html');
@@ -21,10 +28,12 @@ spotifyApi.clientCredentialsGrant()
     console.log('authorization failed', err.message);
   });
 
-  var listener = app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT, function () {
     console.log('Your app is listening on port ' + listener.address().port);
-  });
+});
 
+
+export default Server;
 
 
 
