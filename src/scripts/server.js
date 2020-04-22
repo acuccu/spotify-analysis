@@ -5,6 +5,7 @@ import {client_id} from "../../node_modules/keys"
 import {client_secret} from "../../node_modules/keys"
 import express from "express"
 import { Server } from "net";
+import SpotifyWebApi from "SpotifyWebApi";
 
 // const express = require('express');
 const app = express();
@@ -15,7 +16,7 @@ app.get("/", function (request, response) {
     response.sendFile(__dirname + '/index.html');
   });
 
-const SpotifyWebApi = require('spotify-web-api-node');
+// const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyApi = new SpotifyWebApi({
     clientId : client_id,
     clientSecret : client_secret
