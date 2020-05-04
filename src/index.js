@@ -5,6 +5,7 @@ import "./styles/index.scss"
 
 window.addEventListener("DOMContentLoaded", () => {
 let trackId = "";
+const dataFilter = ["acousticness", "danceability", "energy", "instrumentalness", "key", "tempo", "valence"]
 $(function() {
     
   $.get('/tracksearch', (data) => {
@@ -17,16 +18,24 @@ $(function() {
 
     trackId = data.id;
 
+    $.get(`/trackanalysis/${trackId}`, (data) => {
+      // gets trackanalysis from searched trackId
+      // $('#data-container').text(data.body.id);
+      // console.log(data.body)
+     let d3Data = Object.entries(data.body)
+         .filter(el => dataFilter.includes(el[0]));
+      
+
+    })
+  
+    // D3 logic
+    let divSelection = d3.select('#data-container');
+
   });
 
 })
 
 
 
-$.get(`/trackanalysis/${trackId}`, (data) => {
-  // gets trackanalysis from searched trackId
-  $('#data-container').text(data);
-  console.log(trackId)
-    
-})
+
 ;})
