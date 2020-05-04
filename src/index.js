@@ -23,19 +23,15 @@ $(function() {
       // $('#data-container').text(data.body.id);
       // console.log(data.body)
      let d3Data = Object.entries(data.body)
-         .filter(el => dataFilter.includes(el[0]));
-      
+         .filter(el => dataFilter.includes(el[0]))
+         
+      // D3 logic
+      let divSelection = d3.select('#data-container').selectAll('div');
 
-    })
-  
-    // D3 logic
-    let divSelection = d3.select('#data-container');
-
+      divSelection.data(d3Data).enter().append("div")
+      .text((d) => {
+        return d[0] + ": " + d[1];})
+      })
   });
-
 })
-
-
-
-
 ;})
