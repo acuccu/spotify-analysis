@@ -2,7 +2,7 @@ import "./styles/index.scss"
 
 window.addEventListener("DOMContentLoaded", () => {
 let trackId = "";
-const dataFilter = ["acousticness", "danceability", "energy", "instrumentalness", "key", "tempo", "valence"]
+const features = ["acousticness", "danceability", "energy", "instrumentalness", "key", "tempo", "valence"]
 $(function() {
     
   $.get('/tracksearch', (data) => {
@@ -18,17 +18,71 @@ $(function() {
       // gets trackanalysis from searched trackId
       // console.log(data.body)
           let d3Data = Object.entries(data.body)
-           .filter(el => dataFilter.includes(el[0]));
+           .filter(el => features.includes(el[0]));
            console.log(d3Data)
           let d3DataInterpreted = dataInterpretation(d3Data);
           
           console.log(d3DataInterpreted);
       // D3 logic
-          let divSelection = d3.select('#data-container').selectAll('div');
 
-          divSelection.data(d3DataInterpreted).enter().append("div")
-          .text((d) => {
-            return d[0] + ": " + d[2];})
+        let radialScale = d3.scaleLinear()
+          .domain([0,10])
+          .range([0,250]);
+        let ticks = [2,4,6,8,10];
+
+        let svg = d3.select("body").append("svg")
+          .attr("width", 600)
+          .attr("height", 600);
+        
+          ticks.forEach(t =>
+            svg.append("circle")
+            .attr("cx", 300)
+            .attr("cy", 300)
+            .attr("fill", "none")
+            .attr("stroke", "gray")
+            .attr("r", radialScale(t))
+        );
+
+        ticks.forEach(t =>
+          svg.append("text")
+          .attr("x", 305)
+          .attr("y", 300 - radialScale(t))
+          .text(t.toString())
+      );
+
+      function angleToCoordinate(angle, value){
+        let x = Math.cos(angle) * radialScale(value);
+        let y = Math.sin(angle) * radialScale(value);
+        return {"x": 300 + x, "y": 300 - y};
+      };
+
+      for (var i = 0; i < features.length; i++) {
+        let ft_name = features[i];
+        let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
+        let line_coordinate = angleToCoordinate(angle, 10);
+        let label_coordinate = angleToCoordinate(angle, 10.5);
+      
+        svg.append("line")
+          .attr("x1", 300)
+          .attr("y1", 300)
+          .attr("x2", line_coordinate.x)
+          .attr("y2", line_coordinate.y)
+          .attr("stroke","black");
+        
+        svg.append("text")
+          .attr("x", label_coordinate.x)
+          .attr("y", label_coordinate.y)
+          .text(ft_name);
+      }
+
+
+
+
+          // let divSelection = d3.select('#data-container').selectAll('div');
+
+          // divSelection.data(d3DataInterpreted).enter().append("div")
+          // .text((d) => {
+          //   return d[0] + ": " + d[2];})
       });
   })
 });
