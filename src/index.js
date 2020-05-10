@@ -2,37 +2,48 @@ import "./styles/index.scss"
 
 window.addEventListener("DOMContentLoaded", () => {
 let trackId = "";
-const features = ["acousticness", "danceability", "energy", "instrumentalness", "key", "tempo", "valence"]
+const features = ["danceability", "energy", "key", "valence", "tempo"]
 $(function() {
     
   $.get('/tracksearch', (data) => {
-    
-    // Display the album art
-    var img = $('<img id="albumart"/>');
+    console.log(data);
+    // Display the album art and artist information
+    let img = $('<img id="albumart"/>');
     img.attr('src', data.album.images[0].url);
-    img.appendTo('#data-container');
+    img.appendTo('#track-image');
+    let artist = $(`<div id="artist-info">
+        <div>Artist: ${data.artists[0].name}</div>
+        <div>Track: ${data.name}</div>
+        </div>`);
+    artist.appendTo('#track-image');
 
+    //gets genres from artist
+    $.get(`/album/${data.artists[0].id}`, (data) => {
+      //creates a cloud of genres
+      let d3Cloud = d3.select('#genre-cloud').selectAll('div');
+        d3Cloud.data(data.body.genres).enter().append("div")
+        .text((d) => {return d});    
+    });
+
+
+    
+    // gets trackanalysis from searched trackId
     trackId = data.id;
-
     $.get(`/trackanalysis/${trackId}`, (data) => {
-      // gets trackanalysis from searched trackId
-      // console.log(data.body)
           let d3Data = Object.entries(data.body)
            .filter(el => features.includes(el[0]));
-           console.log(d3Data)
           let d3DataInterpreted = dataInterpretation(d3Data);
-          
-          console.log(d3DataInterpreted);
-      // D3 logic
 
+        
+    // D3 logic
         let radialScale = d3.scaleLinear()
           .domain([0,10])
           .range([0,250]);
         let ticks = [2,4,6,8,10];
 
-        let svg = d3.select("body").append("svg")
-          .attr("width", 600)
-          .attr("height", 600);
+        let svg = d3.select("#main-container").append("svg")
+          .attr("width", 700)
+          .attr("height", 700);
         
           ticks.forEach(t =>
             svg.append("circle")
@@ -60,7 +71,7 @@ $(function() {
         let ft_name = features[i];
         let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
         let line_coordinate = angleToCoordinate(angle, 10);
-        let label_coordinate = angleToCoordinate(angle, 10.5);
+        let label_coordinate = angleToCoordinate(angle, 11.55);
       
         svg.append("line")
           .attr("x1", 300)
@@ -73,7 +84,35 @@ $(function() {
           .attr("x", label_coordinate.x)
           .attr("y", label_coordinate.y)
           .text(ft_name);
-      }
+      };
+
+    let line = d3.line()
+      .x(d => d.x)
+      .y(d => d.y);
+
+    function getPathCoordinates(data_point){
+      let coordinates = [];
+      for (var i = 0; i < features.length; i++){
+          let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
+          coordinates.push(angleToCoordinate(angle, (data_point[i][3])));
+      };
+      return coordinates;
+    };
+
+   
+      let color = "darkorange";
+      let coordinates = getPathCoordinates(d3DataInterpreted);
+  
+      svg.append("path")
+      .datum(coordinates)
+      .attr("d",line)
+      .attr("stroke-width", 3)
+      .attr("stroke", color)
+      .attr("fill", color)
+      .attr("stroke-opacity", 1)
+      .attr("opacity", 0.5);
+
+
 
 
 
@@ -93,30 +132,35 @@ $(function() {
  const dataInterpretation = (data) => {
   
   let result = data.map((el) => {
-    console.log(el);
     if (el[0] == "acousticness") {
     el.push(acousticness(el[1]));
+    el.push(el[1] * 10);
     return el;
     } else if (el[0] == "danceability") {
       el.push(danceability(el[1]));
+      el.push(el[1] * 10);
       return el;
     } else if (el[0] == "energy") {
       el.push(energy(el[1]));
+      el.push(el[1] * 10);
       return el;
     } else if (el[0] == "instrumentalness") {
       el.push(instrumentalness(el[1]));
+      el.push(el[1] * 10);
       return el;
     } else if (el[0] == "key") {
       el.push(key(el[1]));
+      el.push(el[1]);
       return el;
     } else if (el[0] == "tempo") {
       el.push(Math.floor(el[1]));
+      el.push((el[1]-50)/15);
       return el;
     } else if (el[0] == "valence") {
       el.push(valence(el[1]));
+      el.push(el[1] * 10);
       return el;
     };
-    console.log(result);
     
 });
 return result;

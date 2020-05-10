@@ -33,9 +33,10 @@ SpotifyApi.clientCredentialsGrant()
   });
 
   app.get('/tracksearch', function (request, response) {
+    const tracks = ['what you need', 'star shopping', 'honey bucket', 'dopethrone', 'archcarrier', 'alberto balsalm', 'crushed up', 'lotto', 'bachelorette', 'love will tear us apart', 'for want of', 'the bells', 'can you feel it', 'catch me outside', 'fascination street']
   
     // Search for a track!
-    SpotifyApi.searchTracks('track:what you need', {limit: 1})
+    SpotifyApi.searchTracks(`track:${tracks[Math.floor(Math.random() * tracks.length)]}`, {limit: 1})
       .then((data) => {
       
         // Send the first (only) track object
@@ -52,6 +53,14 @@ SpotifyApi.clientCredentialsGrant()
       response.send(data)
       }, function(err) {
         console.error(err);});
+  });
+
+  app.get ('/album/:id', (request, response) => {
+    SpotifyApi.getArtist(request.params.id)
+    .then((data) => {
+      response.send(data)
+    }, function(err) {
+      console.error(err);});
   });
 
  
