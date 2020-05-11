@@ -117,11 +117,11 @@ $(function() {
 
 
 
-          // let divSelection = d3.select('#data-container').selectAll('div');
+      let divSelection = d3.select('#data-bars').selectAll('div');
 
-          // divSelection.data(d3DataInterpreted).enter().append("div")
-          // .text((d) => {
-          //   return d[0] + ": " + d[2];})
+          divSelection.data(d3DataInterpreted).enter().append("div")
+          .text((d) => {
+          return d[0] + ": " + d[2];})
       });
   })
 });
