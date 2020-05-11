@@ -17,7 +17,7 @@
     "server": "nodemon server.js",
     "webpack:watch": "webpack --watch --config webpack.dev.js",
     "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize",
-    "heroku-postbuild": "webpack:build"
+    "heroku-postbuild": "webpack --config webpack.prod.js  --optimize-minimize"
   },
   "node": {
     "fs": "empty"
