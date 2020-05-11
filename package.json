@@ -13,10 +13,11 @@
     "node": "13.6.x"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "webpack:watch": "webpack --watch --config webpack.dev.js",
-    "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
+    "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize",
+    "heroku-postbuild": "webpack:build"
   },
   "node": {
     "fs": "empty"
