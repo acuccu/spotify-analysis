@@ -1,4 +1,4 @@
-const secret_keys = require("./protected/keys.js");
+const secret_keys = require("./public/keys.js");
 const {client_secret, client_id} = secret_keys;
 
 // import {client_id} from "/node_modules/keys"
