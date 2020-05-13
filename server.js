@@ -19,36 +19,41 @@ app.get("/", function (request, response) {
     response.sendFile(__dirname + '/index.html');
   });
 
-const SpotifyWebApi = require('spotify-web-api-node');
-const SpotifyApi = new SpotifyWebApi({
+const spotifyWebApi = require('spotify-web-api-node');
+const spotifyApi = new spotifyWebApi({
     clientId : client_id,
     clientSecret : client_secret
   });
 
-SpotifyApi.clientCredentialsGrant()
+spotifyApi.clientCredentialsGrant()
   .then(function(data) {
-    SpotifyApi.setAccessToken(data.body['access_token']);
+    spotifyApi.setAccessToken(data.body['access_token']);
     }, function(err) {
     console.log('authorization failed', err.message);
   });
 
-  app.get('/tracksearch', function (request, response) {
+  app.get('/tracksearch/:id', function (request, response) {
+
     const tracks = ['what you need', 'star shopping', 'honey bucket', 'dopethrone', 'archcarrier', 'alberto balsalm', 'crushed up', 'lotto', 'bachelorette', 'love will tear us apart', 'for want of', 'the bells', 'can you feel it', 'catch me outside', 'fascination street']
+    
+      let data = request.params.id === "undefined" ? tracks[Math.floor(Math.random() * tracks.length)] : request.params.id;
+      // if (request.params.id === undefined ) {
+      //    let data = tracks[Math.floor(Math.random() * tracks.length)];
+      // } else {
+      //     let data = request.params.id;
+      // };
   
     // Search for a track!
-    SpotifyApi.searchTracks(`track:${tracks[Math.floor(Math.random() * tracks.length)]}`, {limit: 1})
+    spotifyApi.searchTracks(`track:${data}`, {limit: 1})
       .then((data) => {
-      
-        // Send the first (only) track object
-        response.send(data.body.tracks.items[0]);
-      
+      response.send(data.body.tracks.items[0]);
       }, function(err) {
-        console.error(err);
+      console.error(err);
       });
   });
 
   app.get ('/trackanalysis/:id', (request, response) => {
-    SpotifyApi.getAudioFeaturesForTrack(request.params.id)
+    spotifyApi.getAudioFeaturesForTrack(request.params.id)
       .then((data) => {
       response.send(data)
       }, function(err) {
@@ -56,12 +61,14 @@ SpotifyApi.clientCredentialsGrant()
   });
 
   app.get ('/album/:id', (request, response) => {
-    SpotifyApi.getArtist(request.params.id)
+    spotifyApi.getArtist(request.params.id)
     .then((data) => {
       response.send(data)
     }, function(err) {
       console.error(err);});
   });
+
+
 
  
   
