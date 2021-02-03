@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 8000;
 
 
 app.use(express.static('dist'));
+
 app.get("/", function (request, response) {
     response.sendFile(__dirname + '/index.html');
   });

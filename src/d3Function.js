@@ -1,12 +1,13 @@
 import dataInterpretation from "./interpretation";
 
 const d3Function = function(track) {
+    
     console.log(track);
   let trackId = "";
   const features = ["danceability", "energy", "key", "valence", "tempo"] 
     
   $.get(`/tracksearch/${track}`, (data) => {
-    // Display the album ar t and artist information
+    // Display the album art and artist information
     let img = $('<img id="albumart"/>');
     img.attr('src', data.album.images[0].url);
     img.appendTo('#track-image');
