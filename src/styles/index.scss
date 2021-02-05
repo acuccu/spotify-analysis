@@ -34,7 +34,7 @@ h1 {
     font-family: 'spotify-sansserif', Arial, sans-serif;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #483e73;
-    font-size: 80px;
+    font-size: 60px;
     color: #fbc3db;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -43,16 +43,20 @@ h1 {
 }
 #info {
     display: flex;
-    justify-content: left;
+    flex-direction: column;
     height: min-content;
-    border: #483e73 5px solid;
-    width: min-content;
-   
+    
+    width: min-content;  
+}
+
+#data-top {
+    display: flex;
+    justify-content: center;
 }
 
 #main {
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 #albumart {
@@ -64,8 +68,8 @@ h1 {
 }
 
 #data-container {
-  display: inline;
-  
+    height: 10px;
+    width: 10px;
 }
 
 #genre-cloud > div {
@@ -104,8 +108,8 @@ h1 {
 }
 
 
-
 svg {
-    display: inline;
+    transform: scale(0.8, 0.8);
 }
+
 
