@@ -41,7 +41,7 @@ const d3Function = function(track) {
           .range([0,250]);
         let ticks = [2,4,6,8,10];
 
-        let svg = d3.select("#main-container").append("svg")
+        let svg = d3.select("#data-container").append("svg")
           .attr("width", 700)
           .attr("height", 700);
         
