@@ -57,6 +57,8 @@ h1 {
 #main {
     display: flex;
     justify-content: left;
+    width: min-content;
+    margin-left: 35px;
 }
 
 #albumart {
@@ -68,8 +70,11 @@ h1 {
 }
 
 #data-container {
-    height: 10px;
-    width: 10px;
+    float: left;
+    height: min-content;
+    width: min-content;
+    position: relative;
+    top: -100px;
 }
 
 #genre-cloud > div {
