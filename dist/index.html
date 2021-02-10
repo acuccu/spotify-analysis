@@ -35,11 +35,32 @@
       </div>
       
       <div id="modal">
-        <div id="modalContent"><div id="closeBtn">&times;</div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
+         
+          <div id="gradientBorder">
+          <div id="modalContent"><div id="closeBtn">&times;</div>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div></div>
       </div>
   </main>
+
+  <script>let about = document.getElementById("about");
+
+    let modal = document.getElementById("modal");
+    
+    let closeBtn = document.getElementById("closeBtn");
+    
+    about.onclick = function() {
+      modal.style.display = "block";}
+    
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+      }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }}
+    </script>
   
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="

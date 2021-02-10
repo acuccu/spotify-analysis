@@ -19,32 +19,88 @@ $dot-color: hsl(256,33,70);
 $dot-size: 1px;
 $dot-space: 5px;
 
-
+* {
+    z-index: 0;
+}
 
 body {
 
     background-color: #fbc3db;
 }
 
+#gradientBorder {
+  --border-width: 3px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 200px;
+  background: #222;
+  border-radius: var(--border-width);
+  top: 40%;
+  left: 8%;
+    &::after {
+        position: absolute;
+        content: "";
+        top: calc(-1 * var(--border-width));
+        left: calc(-1 * var(--border-width));
+        z-index: -1;
+        width: calc(100% + var(--border-width) * 2);
+        height: calc(100% + var(--border-width) * 2);
+        background: linear-gradient(
+          60deg,
+          hsl(224, 85%, 66%),
+          hsl(269, 85%, 66%),
+          hsl(314, 85%, 66%),
+          hsl(359, 85%, 66%),
+          hsl(44, 85%, 66%),
+          hsl(89, 85%, 66%),
+          hsl(134, 85%, 66%),
+          hsl(179, 85%, 66%)
+        );
+        background-size: 300% 300%;
+        background-position: 0 50%;
+        border-radius: calc(2 * var(--border-width));
+        animation: moveGradient 4s alternate infinite;
+      }
+}
+
+@keyframes moveGradient {
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
 #modal {
-    display: none;
-    position: fixed;
+    display: block;
+    position: absolute;
     z-index: 1;
-    padding-top: 100px;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    top: 0px;
+    left: 0px;
+    float: left;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
 
 #modalContent {
-    background-color: #fefefe;
+    background-color: rgb(122, 122, 120);
+    position: relative;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    border-radius: 3px;
+    width: 20rem;
+    color:white;
+    background:
+		linear-gradient(90deg, rgb(122, 122, 120) ($dot-space - $dot-size), transparent 1%) center,
+		linear-gradient(rgb(122, 122, 120) ($dot-space - $dot-size), transparent 1%) center,
+		$dot-color;
+	background-size: $dot-space $dot-space
   }
+  
+
 
 #nav {
     display: flex;
