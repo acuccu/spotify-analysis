@@ -48,6 +48,18 @@ body {
     
 }
 
+#danceability {
+    position: relative;
+    top: -19px;
+    left: -475px;
+}
+
+#energy {
+    position: relative;
+    top: 133px;
+    left: -633px;
+}
+
 #gradientBorder {
   --border-width: 3px;
   position: absolute;
@@ -84,6 +96,12 @@ body {
         border-radius: calc(2 * var(--border-width));
         animation: moveGradient 4s alternate infinite;
       }
+}
+
+#keytag {
+    position: relative;
+    top: 375px;
+    left: -750px;
 }
 
 @keyframes moveGradient {
@@ -175,7 +193,6 @@ h1 {
     width: min-content;
     position: relative;
     top: -100px;
-    height: 10px;
 }
 
 #genre-cloud > div {
@@ -216,7 +233,18 @@ h1 {
 
 svg {
     transform: scale(0.8, 0.8);
-    height: 600px;
+}
+
+#tempo {
+    position: relative;
+    top: 133px;
+    left: -318px;
+}
+
+#valence {
+    position: relative;
+    left: -440px;
+    top: 375px;
 }
 
 

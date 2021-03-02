@@ -1,8 +1,6 @@
 import dataInterpretation from "./interpretation";
 
 const d3Function = function(track) {
-    
-    console.log(track);
   let trackId = "";
   const features = ["danceability", "energy", "key", "valence", "tempo"] 
     
@@ -80,10 +78,6 @@ const d3Function = function(track) {
           .attr("y2", line_coordinate.y)
           .attr("stroke","black");
         
-        svg.append("text")
-          .attr("x", label_coordinate.x)
-          .attr("y", label_coordinate.y)
-          .text(ft_name);
       };
 
     let line = d3.line()
