@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link type="text/css" rel="stylesheet" href="main.css" />
-    <title>Document</title>
+    <title>Spotify Track Analysis</title>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    
+    <link rel="shortcut icon" type="image/jpg" href="../public/favicon.ico"/>
   </head>
 
   <body>
@@ -43,7 +43,7 @@
          
           <div id="gradientBorder">
           <div id="modalContent"><div id="closeBtn">&times;</div>
-          Spotify Track Analysis is a data visualization tool that utilizes the powerful Spotify API to display information about your favorite songs. 
+          Spotify Track Analysis is a data visualization tool. Combining the powers of the Spotify API and the D3 JavaScript library, this instrument can display information about your favorite songs. Hosted by a server created using Express.js, this web app is authenticated through OAuth - you'll never have to use any credentials to access this tool. 
           <br />
           <br />
           LEGEND:
@@ -53,16 +53,14 @@
           Tempo - Measured in beats per minute (BPM)<br />
           Valence - The mood of the track<br />
           Key - The pitch of the track <br />
-          Energy - Is it fast moving and chaotic or not?<br />
-
-          While the API offers only a numeric output I have taken the liberty to interpret it into natural language to give users a more intuitive experience.
+          Energy - Is the track fast-moving and chaotic, or slow and tame?<br />
+          <br />
+          Spotify's API offers a numeric output for these metrics by default - the liberty has been taken here to interpret these numbers into natural language, to give users a more intuitive experience, and to give listeners a feel for the music before they press "play". 
           <br />
           <br />
           HOW TO SEARCH: <br />
           <br />
-          Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. 
-
-          </div></div>
+          At the moment, the search function uses a song's name and returns the first result. In future developments, users will be able to refine searches by artist          </div></div>
       </div>
 
   <script>let about = document.getElementById("about");

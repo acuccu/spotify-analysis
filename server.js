@@ -1,12 +1,6 @@
 const secret_keys = require("./public/keys.js");
 const {client_secret, client_id} = secret_keys;
-
-// import {client_id} from "/node_modules/keys"
-// import {client_secret} from "/node_modules/keys"
-// import express from "express"
-// import { Server } from "net";
 const server = require('net');
-// import SpotifyWebApi from "SpotifyWebApi";
 
 const express = require('express');
 const app = express();
@@ -38,11 +32,6 @@ spotifyApi.clientCredentialsGrant()
     const tracks = ['what you need', 'star shopping', 'honey bucket', 'dopethrone', 'archcarrier', 'alberto balsalm', 'crushed up', 'lotto', 'bachelorette', 'love will tear us apart', 'for want of', 'the bells', 'can you feel it', 'catch me outside', 'fascination street']
     
       let data = request.params.id === "undefined" ? tracks[Math.floor(Math.random() * tracks.length)] : request.params.id;
-      // if (request.params.id === undefined ) {
-      //    let data = tracks[Math.floor(Math.random() * tracks.length)];
-      // } else {
-      //     let data = request.params.id;
-      // };
   
     // Search for a track!
     spotifyApi.searchTracks(`track:${data}`, {limit: 1})

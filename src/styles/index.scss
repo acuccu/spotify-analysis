@@ -181,6 +181,9 @@ h1 {
 
 #albumart {
     width: 15rem;
+    border: solid 1px #483e73;
+    border-radius: 2px;
+    
 }
 
 #artist-info {
@@ -189,7 +192,7 @@ h1 {
 
 #data-container {
     float: left;
-    height: min-content;
+    height: 550px;
     width: min-content;
     position: relative;
     top: -100px;
