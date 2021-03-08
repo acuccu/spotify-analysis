@@ -6,7 +6,8 @@
     <link type="text/css" rel="stylesheet" href="main.css" />
     <title>Spotify Track Analysis</title>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://kit.fontawesome.com/62a1068948.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -21,7 +22,11 @@
         <input type="text" placeholder="Search.." id="search">
         <button type="submit" id="searchbutton">Search</button>
       </form>
-      <div id="about">About</div>
+      <div id="links-about">
+        <div id="about">About</div>
+        <a class="link-about" href="https://www.linkedin.com/in/antonio-cuccu-4b0906114/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a class="link-about" href="https://github.com/acuccu/" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
     </div>
       <div id="main">
       <div id="info">
@@ -61,7 +66,11 @@
           <br />
           HOW TO SEARCH: <br />
           <br />
-          At the moment, the search function uses a song's name and returns the first result. In future developments, users will be able to refine searches by artist          </div></div>
+          At the moment, the search function uses a song's name and returns the first result. In future developments, users will be able to refine searches by artist
+          <br />
+          <br />
+          Created by <a id="personal-link" href="https://acuccu.github.io/" target="_blank">Antonio Cuccu</a>
+        </div></div>
       </div>
 
   <script>let about = document.getElementById("about");
