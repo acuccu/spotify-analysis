@@ -3,27 +3,23 @@
 
 ## Background
 
-Spotify's API offers developerers offers an incredibly interesting amount of data to be analyzed and displayed.
-Alongside the usual historical metada, developers have access to mood analysis (anceability, valence, energy, tempo),
-properties (loudness, speechiness, instrumentalness), context (liveness or acousticness), and 
-segments (tatums, bars, beats, pitches). This prohject will analyze, compile and display this data, giving the user the ability
-to find tracks and artists with similar moods and properties by using the Echo Nest Api (a spotify partner). 
+Spotify Track Analysis is a data visualization tool. Combining the powers of the Spotify API and the D3 JavaScript library, this instrument can display information about your favorite songs. Hosted by a server created using Express.js, this web app is authenticated through OAuth - you'll never have to use any credentials to access this tool.
 
-## Functionality & MVP 
+## Functionality
 
 * Search for artists, albums, and tracks.
 * Display information regarding mood, properties, and context. 
-* Suggest tracks with similar properties. 
-Bonus: 
-* Map displaying mood, properties, and context of top tracks by location. 
 
-## Wireframe & File Structure
 
-The app will consist of a single screen with a search bar, a radial display for data visualization, and 
-nav links to the Github, my LinkedIn. The app will in addition display historical information for the track, or biographical 
-information for artists along genre tags and album art. 
+## Visualized Values
 
-File Structure will be updated further in the project. 
+* Danceability - Wether the track has a beat or not
+* Tempo - Measured in beats per minute (BPM)
+* Valence - The mood of the track
+* Key - The pitch of the track
+* Energy - Is the track fast-moving and chaotic, or slow and tame?
 
-![wireframe](https://github.com/acuccu/spotify-analysis/blob/master/src/assets/Screen%20Shot%202020-03-01%20at%2010.54.43%20PM.png)
+## How to Search
+
+At the moment, the search function uses a song's name and returns the first result. In future developments, users will be able to refine searches by artist
 
