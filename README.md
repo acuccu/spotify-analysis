@@ -1,5 +1,4 @@
-# spotify-analysis 
-(temporary project name)
+# Spotify Track Analysis
 
 ## Background
 
